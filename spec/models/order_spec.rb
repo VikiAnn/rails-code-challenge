@@ -1,6 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
+  describe '.shipped' do
+    subject { Order.shipped }
+
+    let!(:shipped_order) { create :order }
+    let!(:unshipped_order) { create :order, shipped_at: nil }
+
+    it 'returns only shipped orders' do
+      expect(subject).to include shipped_order
+      expect(subject).not_to include unshipped_order
+    end
+  end
+
+  describe '.unshipped' do
+    subject { Order.unshipped }
+
+    let!(:shipped_order) { create :order }
+    let!(:unshipped_order) { create :order, shipped_at: nil }
+
+    it 'returns only unshipped orders' do
+      expect(subject).to include unshipped_order
+      expect(subject).not_to include shipped_order
+    end
+  end
+
   describe '#shipped?' do
     it { is_expected.to respond_to(:shipped?) }
 

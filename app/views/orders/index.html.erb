@@ -5,10 +5,24 @@
   <body>
     <h1>Orders</h1>
 
-    <ul>
-    <% @orders.each do |order| %>
-      <li><%= link_to order.id, order_path(order) %></li>
-    <% end %>
-    </ul>
+    <section>
+      <h2>Shipped Orders</h2>
+
+      <ul>
+      <% @shipped_orders.each do |order| %>
+        <li><%= link_to order.id, order_path(order) %></li>
+      <% end %>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Unshipped Orders</h2>
+
+      <ul>
+      <% @unshipped_orders.each do |order| %>
+        <li><%= link_to order.id, order_path(order) %></li>
+      <% end %>
+      </ul>
+    </section>
   </body>
 </html>

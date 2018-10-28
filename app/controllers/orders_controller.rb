@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @shipped_orders = Order.shipped.order(:shipped_at)
+    @unshipped_orders = Order.unshipped
   end
 
   def show
