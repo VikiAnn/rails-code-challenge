@@ -10,4 +10,6 @@ RSpec.describe LineItem, type: :model do
   it { is_expected.to validate_presence_of(:quantity) }
   it { is_expected.to validate_presence_of(:unit_price) }
   it { is_expected.to validate_presence_of(:widget) }
+
+  it { is_expected.to monetize(:unit_price).as(:price) }
 end
