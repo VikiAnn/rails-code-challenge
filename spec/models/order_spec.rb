@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
+  it { is_expected.to have_many :line_items }
+  it { is_expected.to have_many(:widgets).through :line_items }
+  it { is_expected.to accept_nested_attributes_for :line_items }
+
   describe '.shipped' do
     subject { Order.shipped }
 

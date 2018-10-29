@@ -1,0 +1,5 @@
+<div class='nested-fields'>
+  <%= f.association :widget, collection: @widgets.map { |w| ["#{w.name} - $#{w.price}", w.id] } %>
+  <%= f.input :quantity %>
+  <%= link_to_remove_association 'remove line item', f %>
+</div>
