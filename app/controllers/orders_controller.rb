@@ -10,12 +10,10 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @widgets = Widget.all
   end
 
   def create
     @order = Order.new(order_params)
-    @widgets = Widget.all
     if @order.save
       redirect_to order_path(@order)
     else
@@ -26,6 +24,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:shipped_at, line_items_attributes: [:id, :widget_id, :quantity])
+    params.require(:order).permit(:shipped_at, line_items_attributes: [:id, :widget_id, :quantity, :_destroy])
   end
 end
