@@ -7,17 +7,15 @@ class Order < ApplicationRecord
   scope :unshipped, -> { where(shipped_at: nil) }
 
   def expedited?
-    @expedite
+    saved_settings['expedite'] || false
   end
 
   def returnable?
-    @returns
+    saved_settings['returns'] || false
   end
 
   def settings(opts = {})
-    @expedite = opts[:expedite].presence
-    @returns = opts[:returns].presence
-    @warehouse = opts[:warehouse].presence
+    update(saved_settings: opts)
   end
 
   def shipped?
@@ -25,6 +23,6 @@ class Order < ApplicationRecord
   end
 
   def warehoused?
-    @warehouse
+    saved_settings['warehouse'] || false
   end
 end

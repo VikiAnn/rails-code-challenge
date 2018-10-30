@@ -1,10 +1,10 @@
 # Creating non-shipped orders.
-puts "Creating non-shipped orders."
 5.times do
+  puts "Creating non-shipped orders."
   Order.create!
 end
 
-puts "Creating shipped orders."
 5.times do
-  Order.create!(shipped_at: Time.now + rand(60).minute)
+  puts "Creating shipped orders."
+  Order.create!(shipped_at: Time.now + Rand(60).minute)
 end

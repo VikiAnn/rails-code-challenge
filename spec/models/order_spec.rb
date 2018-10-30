@@ -45,19 +45,34 @@ RSpec.describe Order, type: :model do
   describe '#settings' do
     it { is_expected.to respond_to(:settings) }
 
-    context 'when expedite is present' do
+    context 'when expedite is set' do
       before { subject.settings(expedite: true) }
       it { is_expected.to be_expedited }
+
+      it 'can be unset' do
+        subject.settings(expedite: false)
+        expect(subject.expedited?).to be false
+      end
     end
 
-    context 'when returns is present' do
+    context 'when returns is set' do
       before { subject.settings(returns: true) }
       it { is_expected.to be_returnable }
+
+      it 'can be unset' do
+        subject.settings(returns: false)
+        expect(subject.returnable?).to be false
+      end
     end
 
-    context 'when warehouse is present' do
+    context 'when warehouse is set' do
       before { subject.settings(warehouse: true) }
       it { is_expected.to be_warehoused }
+
+      it 'can be unset' do
+        subject.settings(warehouse: false)
+        expect(subject.warehoused?).to be false
+      end
     end
   end
 end
