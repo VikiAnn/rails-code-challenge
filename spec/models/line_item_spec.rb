@@ -9,8 +9,10 @@ RSpec.describe LineItem, type: :model do
   it { is_expected.to validate_presence_of(:order) }
   it { is_expected.to validate_presence_of(:quantity) }
   it { is_expected.to validate_presence_of(:widget) }
+  it { is_expected.to validate_numericality_of(:quantity).is_greater_than(0) }
 
   it { is_expected.to monetize(:unit_price).as(:price) }
+
 
   describe '#unit_price' do
     let(:widget) { build :widget, msrp: 200 }

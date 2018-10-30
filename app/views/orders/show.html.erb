@@ -5,8 +5,23 @@
   <body>
     <h1>Order <%= @order.id %></h1>
 
-    <p>Created <%= @order.created_at %></p>
-    <p>Shipped <%= @order.shipped_at %></p>
-    
+    <p>Ordered <%= @order.ordered_at %></p>
+    <p><%= @order.shipped_status %></p>
+
+    <h2>Items</h2>
+    <table>
+      <tr>
+        <th>quantity</th>
+        <th>widget</th>
+        <th>price</th>
+      </tr>
+      <% @order.line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.quantity %></td>
+          <td><%= line_item.widget.name %></td>
+          <td><%= line_item.price %></td>
+        </tr>
+      <% end %>
+    </table>
   </body>
 </html>

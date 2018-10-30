@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-gem 'money-rails'
+gem 'money-rails', '1.12.0'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'cocoon'
@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-rails'
 end
 
 group :development do

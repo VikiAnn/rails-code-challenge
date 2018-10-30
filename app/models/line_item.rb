@@ -2,7 +2,8 @@ class LineItem < ApplicationRecord
   belongs_to :order
   belongs_to :widget
 
-  validates :order, :quantity, :widget, presence: true
+  validates :order, :widget, presence: true
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
 
   monetize :unit_price, as: :price
 
